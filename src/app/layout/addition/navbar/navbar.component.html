@@ -1,0 +1,35 @@
+<nav class="bg-gray-200">
+    <div class="px-20 py-4 flex mx-auto">
+        <div class="logo w-52">
+            <img src="assets/images/freshcart-logo.svg" class="w-full" alt="">
+        </div>
+        <div class="links flex items-center justify-between w-[88%]">
+            <ul class="flex gap-3 ms-5">
+                @if (islogin) {
+
+                    <li><a routerLink="home" routerLinkActive=" text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">Home</a></li>
+                    <li><a routerLink="products" routerLinkActive=" text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">Products</a></li>
+                    <li><a routerLink="categories" routerLinkActive="text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">Categories</a></li>
+                    <li><a routerLink="brands" routerLinkActive="text-white bg-[#0aad0a] rounded-xl" class="text-lg p-2">Brands</a></li>
+                    <li><a routerLink="cart" routerLinkActive="text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">Cart</a></li>
+                }
+            </ul>
+            <ul class="flex gap-3 items-center">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                @if (!islogin) {
+                    
+                    <li><a  routerLink="login" routerLinkActive="text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">LogIn</a></li>
+                    <li><a  routerLink="signup" routerLinkActive="text-white bg-[#0aad0a]  rounded-xl" class="text-lg p-2">SignUp</a></li>
+                }
+                @else {
+
+                    <li><a   class="text-lg p-2 hover:rounded-xl hover:text-white transition-all cursor-pointer hover:bg-red-600" (click)="_AuthService.logout()">LogOut</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

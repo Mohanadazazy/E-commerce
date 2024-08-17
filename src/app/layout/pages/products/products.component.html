@@ -1,0 +1,34 @@
+<section class="px-20">
+    <div class="text-center">
+        <h1 class="text-4xl py-10">Products</h1>
+    </div>
+    <div class="py-4">
+        <label for="" class="text-xl pe-2">Search:</label>
+        <input [(ngModel)]="Search" type="text" class="py-1 border-gray-300 border-2 rounded-md px-2">
+    </div>
+    <div class="allProducts flex-wrap flex"> 
+        @for (product of products; track $index) {
+            @if (product.title.toLowerCase().includes(Search.toLowerCase())) {
+                <div class=" sm:w-full md:w-1/4  lg:w-1/6 p-3">
+                    <div class="product  cursor-pointer rounded-md">
+                        <img [src]="product.imageCover" class="w-full rounded-t-3xl" alt="">
+                        <div class="details px-3 py-4">
+                            <h3 class="text-main text-lg font-['Encode Sans Expanded', sans-serif]">{{product.category.name}} </h3>
+                            <h3 class="text-lg">{{product.title.split(' ').slice(0,2).join(" ")}}...</h3>
+                            <div class="flex justify-between">
+                            <p>{{product.price}}EGP</p>
+                            <p><i class="fa-solid fa-star rating-color"></i>{{product.ratingsAverage}}</p>
+                            </div>
+                            <div class="flex justify-center">
+    
+                                <button class="btn bg-main w-full py-2 rounded-md mt-2 text-white">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+        }
+        
+    </div>
+</section>

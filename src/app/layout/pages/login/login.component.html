@@ -1,0 +1,42 @@
+<section class="px-72 py-10">
+    <h1 class="text-4xl mb-8">LogIn Now : </h1>
+    <form [formGroup]="loginForm" class=" space-y-3" (ngSubmit)="submitLogin()" >
+        <div class="">
+            <label for="">email:</label>
+            <input  formControlName="email"  type="email" class="p-2 w-full border-gray-300 border-2 rounded-lg " placeholder="Email...">
+            @if (loginForm.get("email")?.errors && loginForm.get('email')?.touched) {
+                <div class="bg-[#ffc0c5] rounded-md ">
+                    <ul class="list-disc p-3 px-6">
+                       <li>Email required</li>
+                    </ul>
+                </div>
+            }
+        </div>
+        <div class="">
+            <label for="">password:</label>
+            <input formControlName="password" type="password" class="p-2 w-full border-gray-300 border-2 rounded-lg " placeholder="Password...">
+            @if (loginForm.get("password")?.errors && loginForm.get('password')?.touched) {
+                <div class="bg-[#ffc0c5] rounded-md ">
+                    <ul class="list-disc p-3 px-6">
+                       <li>password required</li>
+                    </ul>
+                </div>
+            }
+        </div>
+        <button [disabled]="loginForm.invalid" class="block ms-auto p-2 text-white bg-[#0aad0a] rounded-md">
+            @if(reload){
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+            }@else {
+                LogIn
+            }
+        </button>
+        @if (errMsg) {
+            <div class="bg-[#ffc0c5] rounded-md ">
+                <ul class="list-disc p-3 px-6">
+                   <li>{{errMsg}}</li>
+                </ul>
+            </div>
+        }
+    </form>
+</section>
